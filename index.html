@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Jokes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Random Jokes :)</h1>
+<div id="jokes-container"></div>
+
+<script>
+    const jokesContainer = document.getElementById('jokes-container');
+
+    async function fetchJokes() {
+        try {
+            const jokes = [];
+
+            let response = await fetch('https://official-joke-api.appspot.com/jokes/random/25');
+            let data = await response.json();
+            jokes.push(...data);
+
+
+            jokes.forEach(joke => {
+                const jokeElement = document.createElement('div');
+                jokeElement.className = 'joke-box';
+                jokeElement.innerHTML = `<p><strong>${joke.setup}</strong><br><br><i>${joke.punchline}</i></p>`;
+                jokesContainer.appendChild(jokeElement);
+            });
+        } catch (error) {
+            jokesContainer.innerHTML = '<p>Failed to load jokes.</p>';
+            console.error('Error fetching jokes:', error);
+        }
+    }
+
+    fetchJokes();
+</script>
+</body>
+</html>

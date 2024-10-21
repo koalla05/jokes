@@ -1,0 +1,48 @@
+body {
+    background-color: dodgerblue;
+    color: white;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h1 {
+    font-family: "Brush Script MT", "Lucida Handwriting", cursive;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+#jokes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.joke-box {
+    background-color: lightskyblue;
+    border: 2px solid white;
+    outline: 4px dotted white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    color: #333333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.joke-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+    #jokes-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .joke-box {
+        width: 90%;
+    }
+}
+
